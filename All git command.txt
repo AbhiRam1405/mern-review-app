@@ -1,0 +1,258 @@
+GIT COMMANDS – COMPLETE GUIDE (WITH PURPOSE)
+🔹 1. Repository Initialization
+git init
+
+What it does:
+Initializes a new Git repository in the current folder.
+
+When to use:
+Once, when starting a new project.
+
+git init
+
+🔹 2. Check Repository Status
+git status
+
+What it does:
+Shows:
+
+Current branch
+
+Modified files
+
+Untracked files
+
+Files staged for commit
+
+When to use:
+Before and after almost every Git action.
+
+git status
+
+🔹 3. View Commit History
+git log
+
+What it does:
+Shows commit history (commit id, author, date, message).
+
+git log
+
+git log --oneline
+
+What it does:
+Shows compact commit history (short hash + message).
+
+git log --oneline
+
+🔹 4. Stage Files (Prepare for Commit)
+git add <file>
+
+What it does:
+Stages a specific file.
+
+git add server/package-lock.json
+
+git add .
+
+What it does:
+Stages all changes in the current directory.
+
+git add .
+
+
+⚠️ Use carefully.
+
+🔹 5. Commit Changes
+git commit -m "message"
+
+What it does:
+Saves staged changes as a snapshot with a message.
+
+git commit -m "chore: add server package-lock for dependency consistency"
+
+🔹 6. Branch Management
+git branch
+
+What it does:
+Lists all local branches.
+
+git branch
+
+git branch <name>
+
+What it does:
+Creates a new branch.
+
+git branch dev
+
+git checkout <branch>
+
+What it does:
+Switches to another branch.
+
+git checkout dev
+
+git checkout -b <branch>
+
+What it does:
+Creates a branch and switches to it.
+
+git checkout -b dev
+
+git branch -m <old> <new>
+
+What it does:
+Renames a branch.
+
+git branch -m master main
+
+🔹 7. Remote Repository Management
+git remote
+
+What it does:
+Lists remote repositories.
+
+git remote
+
+git remote -v
+
+What it does:
+Shows remote URLs (fetch & push).
+
+git remote -v
+
+git remote add origin <url>
+
+What it does:
+Connects local repo to GitHub.
+
+git remote add origin https://github.com/AbhiRam1405/mern-review-app.git
+
+git remote remove origin
+
+What it does:
+Removes remote connection.
+
+git remote remove origin
+
+🔹 8. Push Code to GitHub
+git push origin <branch>
+
+What it does:
+Pushes a branch to remote.
+
+git push origin dev
+
+git push -u origin <branch>
+
+What it does:
+Pushes branch and sets upstream tracking
+(After this, git push alone works).
+
+git push -u origin main
+
+🔹 9. Pull Changes from GitHub
+git pull
+
+What it does:
+Fetches and merges changes from remote branch.
+
+git pull
+
+git pull origin <branch>
+
+What it does:
+Pulls a specific branch.
+
+git pull origin dev
+
+🔹 10. Fetch (Without Merging)
+git fetch
+
+What it does:
+Downloads remote changes without merging.
+
+git fetch
+
+🔹 11. Ignore Files
+.gitignore
+
+What it does:
+Tells Git which files should never be tracked.
+
+Example:
+
+node_modules/
+.env
+
+🔹 12. Check Tracked Files
+git ls-files
+
+What it does:
+Lists all tracked files.
+
+git ls-files
+
+🔹 13. Undo / Fix Mistakes
+git restore <file>
+
+What it does:
+Reverts file to last committed version.
+
+git restore server/server.js
+
+git reset <file>
+
+What it does:
+Unstages a file.
+
+git reset server/package-lock.json
+
+git reset --hard
+
+What it does:
+⚠️ DANGEROUS
+Resets everything to last commit.
+
+git reset --hard
+
+🔹 14. Merge Branches
+git merge <branch>
+
+What it does:
+Merges another branch into current branch.
+
+git checkout main
+git merge dev
+
+🔹 15. Delete Branch
+git branch -d <branch>
+
+What it does:
+Deletes a local branch.
+
+git branch -d feature-login
+
+🔹 16. Tagging (Releases)
+git tag v1.0.0
+
+What it does:
+Marks a release version.
+
+git tag v1.0.0
+git push origin v1.0.0
+
+🧠 DAILY GIT WORKFLOW (BEST PRACTICE)
+git checkout dev
+git status
+git add .
+git commit -m "feat: add review API"
+git push origin dev
+
+🟢 FOR YOUR MERN PROJECT — MOST USED COMMANDS
+Purpose	Command
+Check status	git status
+Create branch	git checkout -b dev
+Commit changes	git commit -m "message"
+Push to GitHub	git push origin dev
+Merge to main	git merge dev
