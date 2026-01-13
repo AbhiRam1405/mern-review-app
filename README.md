@@ -1,116 +1,97 @@
 # MERN Review App
 
-A simple, production-ready review submission application built with the MERN stack.
+A production-ready review submission application built with the MERN stack (MongoDB, Express, React, Node.js).
+This project demonstrates a clean, scalable architecture suitable for beginners and interview scenarios.
 
 ## Features
 
-- Submit reviews with name, rating (1-5), and text
-- View all submitted reviews
-- RESTful API architecture
-- MongoDB data persistence
+- **Submit Reviews**: Users can submit a name, rating (1-5), and comment.
+- **View Reviews**: Real-time listing of all submitted reviews, sorted by newest.
+- **Form Validation**: Client-side and server-side validation for data integrity.
+- **Responsive UI**: Clean, accessible interface built with React.
+- **Robust Backend**: RESTful API with error handling and strict schema validation.
 
 ## Tech Stack
 
-- **Frontend**: React (functional components + hooks)
-- **Backend**: Node.js + Express
-- **Database**: MongoDB + Mongoose
-- **API**: REST
+- **Frontend**: React (Hooks, Functional Components)
+- **Backend**: Node.js, Express
+- **Database**: MongoDB, Mongoose
+- **Tools**: Git, Nodemon, Dotenv, CORS
 
 ## Project Structure
 
 ```
 mern-review-app/
-├── client/          # React frontend
-│   ├── public/
+├── client/                 # React Frontend
 │   ├── src/
-│   │   ├── components/
-│   │   ├── services/
-│   │   ├── App.js
-│   │   └── index.js
+│   │   ├── components/    # Reusable UI components (ReviewForm, ReviewList)
+│   │   ├── services/      # API service layer
+│   │   └── App.js         # Main application container
 │   └── package.json
 │
-├── server/          # Express backend
-│   ├── config/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── middleware/
-│   ├── server.js
-│   └── package.json
+├── server/                 # Express Backend
+│   ├── config/            # Database connection logic
+│   ├── controllers/       # Business logic
+│   ├── middleware/        # Error handling & custom middleware
+│   ├── models/            # Mongoose schemas
+│   ├── routes/            # API route definitions
+│   └── server.js          # Entry point
 │
-├── .gitignore
-└── README.md
+├── .gitignore             # Git exclusions
+└── README.md              # Project documentation
 ```
 
-## Prerequisites
+## Setup Instructions
 
-- Node.js (v14 or higher)
-- MongoDB (local or Atlas)
-- npm or yarn
+### Prerequisites
+- Node.js (v14+)
+- MongoDB (Running locally or MongoDB Atlas URI)
 
-## Getting Started
-
-### 1. Clone the repository
-
+### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd "Web app"
+cd mern-review-app
 ```
 
-### 2. Install dependencies
-
-```bash
-# Install server dependencies
-cd server
-npm install
-
-# Install client dependencies
-cd ../client
-npm install
-```
-
-### 3. Configure environment variables
-
+### 2. Backend Setup
 ```bash
 cd server
+npm install
 cp .env.example .env
-# Edit .env with your MongoDB connection string
-```
-
-### 4. Run the application
-
-```bash
-# Terminal 1 - Run backend (from server/)
+# Open .env and set your MONGO_URI (e.g., mongodb://localhost:27017/mern-review-app)
 npm run dev
+```
+*Server runs on http://localhost:5000*
 
-# Terminal 2 - Run frontend (from client/)
+### 3. Frontend Setup
+Open a new terminal:
+```bash
+cd client
+npm install
 npm start
 ```
+*Client runs on http://localhost:3000*
 
-## API Endpoints
+## API Documentation
 
-*To be documented in Phase 2*
+### Base URL: `/api/reviews`
 
-## Development Phases
+| Method | Endpoint | Description | Body / Payload |
+|:--- |:--- |:--- |:--- |
+| **GET** | `/` | Fetch all reviews | None |
+| **POST** | `/` | Create a new review | `{ "name": "John", "rating": 5, "comment": "Great!" }` |
 
-- [x] Phase 1: Project Initialization & Git Setup
-- [ ] Phase 2: Backend Architecture & Database Design
-- [ ] Phase 3: Server Configuration & Environment Setup
-- [ ] Phase 4: Frontend Review Form (React)
-- [ ] Phase 5: Review Listing & Data Rendering
-- [ ] Phase 6: Git Discipline & Documentation
+### Validation Rules
+- **Name**: Required, Max 50 chars.
+- **Rating**: Required, Number 1-5.
+- **Comment**: Required, Max 500 chars.
 
-## Contributing
-
-This is a learning project. Follow the commit conventions:
-- Use descriptive commit messages
-- One feature per commit
-- Test before committing
+## Development Workflow
+1.  Frontend calls `reviewService` methods.
+2.  Service sends HTTP requests to Express backend.
+3.  Backend validates data against Mongoose schema.
+4.  Data saved to MongoDB.
+5.  Response sent back to update UI.
 
 ## License
-
 MIT
-
-## Author
-
-Abhishek
