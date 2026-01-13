@@ -1,7 +1,8 @@
+```
 import React, { useState } from 'react';
 import { createReview } from '../services/reviewService';
 
-const ReviewForm = () => {
+const ReviewForm = ({ onReviewAdded }) => {
     const [formData, setFormData] = useState({
         name: '',
         rating: 5,
@@ -27,6 +28,7 @@ const ReviewForm = () => {
             await createReview(formData);
             setMessage('Review submitted successfully!');
             setFormData({ name: '', rating: 5, comment: '' });
+            if (onReviewAdded) onReviewAdded();
         } catch (error) {
             setIsError(true);
             setMessage(error.message || 'Something went wrong. Please try again.');
