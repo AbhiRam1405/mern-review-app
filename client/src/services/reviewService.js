@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/reviews';
+const API_URL = 'https://mern-review-app.onrender.com/api/reviews';
 
 /**
  * Fetches all reviews from the backend.
