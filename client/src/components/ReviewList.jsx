@@ -122,6 +122,9 @@ const ReviewList = ({ refreshTrigger }) => {
                             <span style={styles.rating}>{review.rating} / 5</span>
                         </div>
                         <p style={styles.comment}>{review.comment}</p>
+                        <div style={{ fontSize: '0.9em', color: '#666', marginBottom: '5px' }}>
+                            <strong>Phone:</strong> {review.phoneNumber}
+                        </div>
                         <div style={styles.date}>
                             {formatDate(review.createdAt)}
                         </div>

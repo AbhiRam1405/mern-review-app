@@ -26,12 +26,13 @@ const getReviews = async (req, res) => {
 // @access  Public
 const createReview = async (req, res) => {
     try {
-        const { name, rating, comment } = req.body;
+        const { name, rating, comment, phoneNumber } = req.body;
 
         const review = await Review.create({
             name,
             rating,
-            comment
+            comment,
+            phoneNumber
         });
 
         res.status(201).json({

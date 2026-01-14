@@ -5,7 +5,8 @@ const ReviewForm = ({ onReviewAdded }) => {
     const [formData, setFormData] = useState({
         name: '',
         rating: 5,
-        comment: ''
+        comment: '',
+        phoneNumber: ''
     });
     const [message, setMessage] = useState('');
     const [isError, setIsError] = useState(false);
@@ -26,7 +27,7 @@ const ReviewForm = ({ onReviewAdded }) => {
         try {
             await createReview(formData);
             setMessage('Review submitted successfully!');
-            setFormData({ name: '', rating: 5, comment: '' });
+            setFormData({ name: '', rating: 5, comment: '', phoneNumber: '' });
             if (onReviewAdded) onReviewAdded();
         } catch (error) {
             setIsError(true);
@@ -141,6 +142,22 @@ const ReviewForm = ({ onReviewAdded }) => {
                         required
                         maxLength="500"
                         placeholder="Write your review here..."
+                    />
+                </div>
+
+                <div style={styles.formGroup}>
+                    <label style={styles.label} htmlFor="phoneNumber">Phone Number:</label>
+                    <input
+                        style={styles.input}
+                        type="tel"
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={formData.phoneNumber}
+                        onChange={handleChange}
+                        required
+                        pattern="\d{10}"
+                        maxLength="10"
+                        placeholder="Enter 10-digit phone number"
                     />
                 </div>
 
